@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Simple Form</h1>
-</body>
+    <h1>Learning PHP & Database</h1>
+
+        <main>
+            <h2>Welcome to PHP & Database Learning</h2>
+            <p>This is a simple PHP project to learn PHP and Database integration.</p>
+            <p>Feel free to explore and modify the code as you learn!</p>
+        </main>
+
+    </body>
 </html>
