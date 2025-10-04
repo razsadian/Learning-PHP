@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <?php include 'layout/header.html' ?>
     <h1>Learning PHP & Database</h1>
 
         <main>
@@ -14,5 +15,6 @@
             <p>Feel free to explore and modify the code as you learn!</p>
         </main>
 
+    <?php include 'layout/footer.html' ?>
     </body>
 </html>
