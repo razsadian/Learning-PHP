@@ -4,11 +4,13 @@ include 'service/database.php';
 if(isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' OR email='$email' AND password='$password'";
+// mengecek data di database
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' ";
     $result = $db->query($sql);
-    if($result->numb_row > 0) {
-        echo "Login Successful";
+    // mengecek apakah username dan password ada di database
+    if($result->num_rows > 0) {
+        $data = $result->fetch_assoc(); // menampilkan data user
+        echo "Login Successful " . 'Welcome ' . $data['username'];
     } else {
         echo "Login Failed";
     }
