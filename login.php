@@ -5,7 +5,7 @@ if(isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username='$username' email='$email' AND password='$password'";
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' OR email='$email' AND password='$password'";
     $result = $db->query($sql);
     if($result->numb_row > 0) {
         echo "Login Successful";
