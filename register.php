@@ -1,21 +1,22 @@
 <?php 
 include 'service/database.php'; 
+
+$register_message = "";
 // menangkap data yang di kirim dari form
 if(isset($_POST['register'])) {
     $username = $_POST['username'];
-    $email = $_POST['email'];
     $password = $_POST['password'];
 // menambahkan data ke database
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
 if($db->query($sql)) {
-    echo "your account created successfully";
+    $register_message = "Register Successful";
+}
 } else {
-    echo "Error";
+    $register_message = "Register Failed";
 
 }
 
 
-}
 
 
 
@@ -35,12 +36,10 @@ if($db->query($sql)) {
 <body>
     <?php include 'layout/header.html' ?>
     <h1>Register Page</h1>
+    <i><?= $register_message ?></i>
     <form action="register.php" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="zora123" required><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="zoraxxx@gmail.com" required><br>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="******" required><br>

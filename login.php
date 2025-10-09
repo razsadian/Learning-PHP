@@ -1,5 +1,8 @@
 <?php 
 include 'service/database.php';
+session_start();
+
+$login_message = "";
 // menangkap data yang di kirim dari form
 if(isset($_POST['submit'])) {
     $username = $_POST['username'];
@@ -10,9 +13,12 @@ if(isset($_POST['submit'])) {
     // mengecek apakah username dan password ada di database
     if($result->num_rows > 0) {
         $data = $result->fetch_assoc(); // menampilkan data user
-        echo "Login Successful " . 'Welcome ' . $data['username'];
+        $_SESSION ["username"] = $data['username'];
+        $_SESSION ["is_login"] = true;
+
+        header("location: dashboard.php");
     } else {
-        echo "Login Failed";
+        $login_message = "Login Failed, Account not found";
     }
 }
 
@@ -30,6 +36,7 @@ if(isset($_POST['submit'])) {
 <body>
     <?php include 'layout/header.html' ?>
     <h1>Login Page</h1>
+    <i><?= $login_message ?></i>
     <form action="login.php" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="zora123" required?></br>
