@@ -1,6 +1,12 @@
 <?php 
 session_start();
 
+if(isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header('location: index.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +19,9 @@ session_start();
 <body>
     <?php include 'layout/header.html' ?>
     <H1>Welcome Back <?= $_SESSION ["username"]?></H1>
+    <form action="dashboard.php" method="post">
+        <button type="submit" name="logout">Logout</button>
+    </form>
     <?php include 'layout/footer.html' ?>
 </body>
 </html>
